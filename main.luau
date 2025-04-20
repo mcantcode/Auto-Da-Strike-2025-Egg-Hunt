@@ -50,14 +50,15 @@ if getEggAmount() < 20 then
 		})
 
 		serverHop()
+
+		return
 	else
+		local userSaidYes = false
 		local bindable = Instance.new("BindableFunction")
 
 		bindable.OnInvoke = function(response)
 			if response == "Yes" then
-				serverHop()
-			else
-				return
+				userSaidYes = true
 			end
 		end
 
@@ -68,6 +69,14 @@ if getEggAmount() < 20 then
 			Button1 = "Yes",
 			Button2 = "No"
 		})
+
+		repeat
+			task.wait()
+		until userSaidYes ~= nil
+
+		if userSaidYes then
+			serverHop()
+		end
 
 		return
 	end
