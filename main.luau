@@ -73,7 +73,7 @@ if getEggAmount() < 20 then
 	end
 end
 
-for _, v in eggHunt:GetChildren() do
+for _, v in pairs(eggHunt:GetChildren()) do
 	if v:IsA("Part") then
 		humanoidRootPart.CFrame = v.CFrame
 		task.wait(0.5)
