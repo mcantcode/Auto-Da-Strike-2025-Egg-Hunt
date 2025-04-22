@@ -1,5 +1,3 @@
-local virtualInputManager = game:GetService("VirtualInputManager")
-
 local localPlayer = game:GetService("Players").LocalPlayer
 local character = localPlayer and localPlayer.Character or localPlayer.CharacterAdded:Wait()
 local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
@@ -77,8 +75,7 @@ for _, v in pairs(eggHunt:GetChildren()) do
 	if v:IsA("Part") then
 		humanoidRootPart.CFrame = v.CFrame
 		task.wait(0.5)
-		virtualInputManager:SendKeyEvent(true, "E", false, game)
-		virtualInputManager:SendKeyEvent(false, "E", false, game)
+		game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
 		task.wait(0.5)
 	end
 end
