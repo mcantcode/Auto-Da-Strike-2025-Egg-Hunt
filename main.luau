@@ -78,7 +78,7 @@ for _, v in pairs(eggHunt:GetChildren()) do
 			task.wait(0.5)
 			game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
 			task.wait(1)
-		until not v
+		until not eggHunt:FindFirstChild(v.Name)
 	end
 end
 
