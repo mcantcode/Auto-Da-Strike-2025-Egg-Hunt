@@ -73,10 +73,12 @@ end
 
 for _, v in pairs(eggHunt:GetChildren()) do
 	if v:IsA("Part") then
-		humanoidRootPart.CFrame = v.CFrame
-		task.wait(0.5)
-		game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
-		task.wait(0.5)
+		repeat
+			humanoidRootPart.CFrame = v.CFrame
+			task.wait(0.5)
+			game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
+			task.wait(1)
+		until not v
 	end
 end
 
