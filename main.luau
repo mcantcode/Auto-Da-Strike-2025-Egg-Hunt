@@ -6,7 +6,11 @@ local eggHunt = workspace:FindFirstChild("EggHunt")
 local player = eggHunt and eggHunt:FindFirstChild("Player")
 local playerHumanoidRootPart = player and player:FindFirstChild("HumanoidRootPart")
 
-if not humanoidRootPart or not playerHumanoidRootPart then
+local success, has2025EggHuntBadge = pcall(function()
+	return game:GetService("BadgeService"):UserHasBadgeAsync(localPlayer.UserId, 3260623671472319)
+end)
+
+if not humanoidRootPart or not playerHumanoidRootPart or not success or has2025EggHuntBadge then
 	return
 end
 
@@ -77,7 +81,7 @@ for _, v in pairs(eggHunt:GetChildren()) do
 			humanoidRootPart.CFrame = v.CFrame
 			task.wait(0.5)
 			game:GetService("VirtualInputManager"):SendKeyEvent(true, "E", false, game)
-			task.wait(1)
+			task.wait(0.5)
 		until not eggHunt:FindFirstChild(v.Name)
 	end
 end
